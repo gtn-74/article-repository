@@ -1,9 +1,6 @@
 import { createContext, useContext } from "react";
-import {
-  ContextType,
-  useCreateStoreContext,
-} from "../hooks/useSyncExternalStore";
-// import { useCreateStoreContext, ContextType } from "./useSyncExternalStore";
+import { ContextType } from "../hooks/useSyncExternalStore";
+import { useAtom } from "../store/useAtom";
 
 // 型定義
 interface StateType {
@@ -16,14 +13,13 @@ interface StateType {
 const GlobalStoreContext = createContext<ContextType<StateType> | null>(null);
 
 // プロバイダを作成
-export const GlobalStoreProvider = ({
-  children,
-}: React.PropsWithChildren) => {
-  const context = useCreateStoreContext(() => ({
-    a: 0,
-    b: 10,
-    c: 100,
-  }));
+export const GlobalStoreProvider = ({ children }: React.PropsWithChildren) => {
+  // const context = useCreateStoreContext(() => ({
+  //   a: 0,
+  //   b: 10,
+  //   c: 100,
+  // }));
+  const context = useAtom();
   return (
     <GlobalStoreContext.Provider value={context}>
       {children}
