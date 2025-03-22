@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/date-picker" element={<DatePickerPage />} />
         <Route path="/dnd-example" element={<DndExamplePage />} />
         <Route path="/article" element={<Article12page />} />
-        <Route path="/article/:id" element={<Index />} />{" "}
+        <Route path="/article/:id" element={<Index />} />
         {/* /:id  スラ忘れない！ */}
         {/* <Route path="/article" element={<Article12page />}>
         <Route path="/article/:id" element={<Index />} />
