@@ -24,6 +24,8 @@ export default function Home() {
       <Link to={`/sample`} children={"sample"} />
       <br />
       <Link to={`/state`} children={"state"} />
+      <br />
+      <Link to={`/table-demo`} children={"table-demo"} />
 
       <p>A:{valueA}</p>
     </>

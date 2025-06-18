@@ -7,6 +7,7 @@ import Index from "./page";
 import TypePage from "./page/typePage";
 import Sample from "./page/switch";
 import StatePage from "./page/state";
+import TableDemoPage from "./page/table-demo";
 import { GlobalStoreProvider } from "./provider/StorePrivider";
 
 export default function App() {
@@ -19,12 +20,9 @@ export default function App() {
         <Route path="/dnd-example" element={<DndExamplePage />} />
         <Route path="/article" element={<Article12page />} />
         <Route path="/article/:id" element={<Index />} />
-        {/* /:id  スラ忘れない！ */}
-        {/* <Route path="/article" element={<Article12page />}>
-        <Route path="/article/:id" element={<Index />} />
-        </Route> */}
         <Route path="/type" element={<TypePage />} />
         <Route path="/sample" element={<Sample />} />
+        <Route path="/table-demo" element={<TableDemoPage />} />
       </Routes>
     </GlobalStoreProvider>
   );
