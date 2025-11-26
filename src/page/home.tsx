@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { useGlobalStore } from "../provider/StorePrivider";
 import { useSelector } from "../hooks/useSyncExternalStore";
+import { useGlobalStore } from "../provider/StorePrivider";
 
 export default function Home() {
   const params = 555;
   console.log(params);
 
 
-  const context = useGlobalStore()
+  const context = useGlobalStore();
   const valueA = useSelector(context, (state) => state.a);
 
   return (

@@ -40,12 +40,12 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T): number {
   return 0;
 }
 
-function getComparator<Key extends keyof any>(
+function getComparator<Key extends keyof EmployeeWithSalary>(
   order: Order,
   orderBy: Key,
 ): (
-  a: { [key in Key]: number | string },
-  b: { [key in Key]: number | string },
+  a: EmployeeWithSalary,
+  b: EmployeeWithSalary,
 ) => number {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
@@ -174,7 +174,7 @@ const SortableTable: React.FC = () => {
           onRequestSort={handleRequestSort}
         />
         <TableBody>
-          {visibleRows.map((row: EmployeeWithSalary, index: number) => (
+          {visibleRows.map((row: EmployeeWithSalary) => (
             <TableRow
               hover
               tabIndex={-1}
