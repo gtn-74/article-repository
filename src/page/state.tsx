@@ -7,6 +7,7 @@ import {
   useSelector,
 } from "../hooks/useSyncExternalStore";
 import { useGlobalStore } from "../provider/StorePrivider";
+import { Observable } from "../utils/observable";
 
 // コンポーネントに渡す型を定義
 interface StateType {
@@ -58,15 +59,42 @@ const Buttons = ({ context }: { context: ContextType<StateType> }) => {
   );
 };
 
+// Observableのインスタンスを作成
+const observable = new Observable<string>();
+
 export default function StatePage() {
+  function handleClick() {
+    observable.notify("User clicked button!");
+  }
+
+  // function handleToggle() {
+  //   observable.notify("User toggled switch!");
+  // }
+
+  function logger(data: string) {
+    console.log(`${Date.now()} ${data}`);
+  }
+
+  function toastify(data: string) {
+    console.log(`Toast: ${data}`);
+    // toast(data, {
+    //   position: toast.POSITION.BOTTOM_RIGHT,
+    //   closeButton: false,
+    //   autoClose: 2000,
+    // });
+  }
+
+  observable.subscribe(logger);
+  observable.subscribe(toastify);
+
   // ここから渡してる値が:initState。つまりa,b,c
   // const context = useCreateStoreContext<StateType>(() => ({
   //   a: 0,
   //   b: 10,
   //   c: 100,
   // }));
-  const context = useGlobalStore()
-  
+  const context = useGlobalStore();
+
   return (
     <div>
       <A context={context} />
@@ -74,6 +102,8 @@ export default function StatePage() {
       <C context={context} />
       <Buttons context={context} />
       <Link to="/" children={"home"} />
+      <br />
+      <button onClick={handleClick}>observable</button>
     </div>
   );
 }

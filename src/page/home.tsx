@@ -6,13 +6,12 @@ export default function Home() {
   const params = 555;
   console.log(params);
 
-
   const context = useGlobalStore();
   const valueA = useSelector(context, (state) => state.a);
 
   return (
     <>
-      <div>home</div>
+      <h1>home</h1>
       <Link to="/date-picker" children={"date-picker"} />
       <br />
       <Link to="/dnd-example" children={"dnd-example"} />
@@ -25,9 +24,21 @@ export default function Home() {
       <br />
       <Link to={`/state`} children={"state"} />
       <br />
-      <Link to={`/table-demo`} children={"table-demo"} />
-
+      <Link to={`/prototype`} children={"prototype"} />
+      <br />
+      <Link to={`/observable-demo`} children={"observable-demo"} />
+      <br />
+      <Link to={`/observable-stock-demo`} children={"observable-stock-demo"} />
+      <br />
+      <Link to={`/observable-form-demo`} children={"observable-form-demo"} />
+      <br />
+      <Link to={`/rhf-yup-form`} children={"React Hook Form + Yup"} />
+      <br />
+      <Link to={`/rhf-zod-form`} children={"React Hook Form + Zod"} />
       <p>A:{valueA}</p>
+
+      <h2>Observable</h2>
+      {/* <button onClick={handleClick}>Click me!</button> */}
     </>
   );
 }
